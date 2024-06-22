@@ -160,7 +160,9 @@ html.selfcontained = TRUE,globalcomparison=TRUE,plot.pairwise=TRUE,apply.sparse.
    
     
     suppressWarnings(
-    if(is.na(Zome_data)==FALSE){
+    if(is.na(Zome_data)[1] || !is.data.frame(Zome_data)){
+    # Original
+    # if(is.na(Zome_data)==FALSE){
         
        
         
@@ -195,7 +197,9 @@ html.selfcontained = TRUE,globalcomparison=TRUE,plot.pairwise=TRUE,apply.sparse.
     
     
     suppressWarnings(
-    if(is.na(Wome_data)==FALSE){
+    if(is.na(Wome_data)[1] || !is.data.frame(Wome_data)){
+    # original
+    #if(is.na(Wome_data)==FALSE){
         
        
         
@@ -223,7 +227,9 @@ html.selfcontained = TRUE,globalcomparison=TRUE,plot.pairwise=TRUE,apply.sparse.
     
     
     suppressWarnings(
-    if(is.na(Xome_data)==TRUE){
+    if(is.na(Xome_data)[1] || !is.data.frame(Xome_data)){
+    #Original
+    #if(is.na(Xome_data)==TRUE){
         
        
         stop("X data matrix is required.")
