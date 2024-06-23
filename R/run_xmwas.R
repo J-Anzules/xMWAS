@@ -61,10 +61,10 @@ html.selfcontained = TRUE,globalcomparison=TRUE,plot.pairwise=TRUE,apply.sparse.
     print(paste("Program is running. Please check the logfile for runtime status: ",log_fname,sep=""))
     
     sink(file=log_fname)
-     
-     #all.missing.thresh=0.1
     
+     #all.missing.thresh=0.1
     if(is.na(xome_fname)==FALSE){
+      print("Xome_fname was loaded")
         Xome_data<-read.table(xome_fname,sep="\t",header=TRUE)
         
         
@@ -157,7 +157,7 @@ html.selfcontained = TRUE,globalcomparison=TRUE,plot.pairwise=TRUE,apply.sparse.
        
     }
     
-   
+    
     
     suppressWarnings(
     if(is.na(Zome_data)[1] || !is.data.frame(Zome_data)){
@@ -224,10 +224,13 @@ html.selfcontained = TRUE,globalcomparison=TRUE,plot.pairwise=TRUE,apply.sparse.
       
         
     })
+    print("Script made it to line 228")
+    # print(head(Xome_data, n=1))
+    # xMwas_Xome <<- Xome_data
     
     
     suppressWarnings(
-    if(is.na(Xome_data)[1] || !is.data.frame(Xome_data)){
+    if(is.na(Xome_data)[1] || !is.double(Xome_data)){
     #Original
     #if(is.na(Xome_data)==TRUE){
         
@@ -247,8 +250,13 @@ html.selfcontained = TRUE,globalcomparison=TRUE,plot.pairwise=TRUE,apply.sparse.
         
         
     }
+    # Another problematic area?
+    print("line 254")
     suppressWarnings(
-    if(is.na(classlabels)==TRUE){
+    # Original
+    #if(is.na(classlabels)==TRUE){
+    if(is.na(classlabels)[1]==TRUE){  
+      
         
         classlabels<-rep("A",dim(Xome_data)[2])
         
@@ -267,15 +275,19 @@ html.selfcontained = TRUE,globalcomparison=TRUE,plot.pairwise=TRUE,apply.sparse.
 
         
     })
+    # print("after problem 275")
     classlabels<-as.data.frame(classlabels)
     
     
     colors_sel_vec<-net_node_colors
     
     res<-new("list")
-    
+    # Another problematic area?
+    print("Is this the problem? line 282")
     suppressWarnings(
-    if(is.na(classlabels)==FALSE){
+      # Original
+    #if(is.na(classlabels)==FALSE){
+    if(is.na(classlabels)[1]==FALSE){
                 cnames<-colnames(classlabels)
                 cnames<-tolower(cnames)
 
@@ -313,6 +325,7 @@ html.selfcontained = TRUE,globalcomparison=TRUE,plot.pairwise=TRUE,apply.sparse.
          
         }
     )
+    print("After the problems line 323")
 
 if(globalcomparison==TRUE){
     if(pairedanalysis==TRUE){

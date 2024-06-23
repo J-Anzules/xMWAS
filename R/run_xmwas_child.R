@@ -83,7 +83,9 @@ if(is.na(zome_fname)==FALSE){
     Zome_data<-read.table(zome_fname,sep="\t",header=TRUE)
 }
 suppressWarnings(
-   if(is.na(Zome_data)==FALSE){ 
+  # Original
+  if(is.na(Zome_data)[1] || !is.double(Zome_data)){
+   # if(is.na(Zome_data)==FALSE){ 
     rnames<-rownames(Zome_data)
     if(length(which(duplicated(rnames)==TRUE))>0){
    	Zome_data<-Zome_data[-which(duplicated(rnames)==TRUE),,drop=FALSE]
@@ -128,7 +130,9 @@ suppressWarnings(
     })
 
 suppressWarnings(
-if(is.na(Xome_data)==TRUE){
+# Original
+# if(is.na(Xome_data)==TRUE){
+if(is.na(Xome_data)[1] || !is.double(Xome_data)){
     
     stop("X data matrix is required.")
 })
