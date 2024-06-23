@@ -160,7 +160,7 @@ html.selfcontained = TRUE,globalcomparison=TRUE,plot.pairwise=TRUE,apply.sparse.
     
     
     suppressWarnings(
-    if(is.na(Zome_data)[1] || !is.data.frame(Zome_data)){
+    if(is.na(Zome_data)[1] == FALSE || is.double(Zome_data)){
     # Original
     # if(is.na(Zome_data)==FALSE){
         
