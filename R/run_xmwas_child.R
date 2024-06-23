@@ -83,8 +83,10 @@ if(is.na(zome_fname)==FALSE){
     Zome_data<-read.table(zome_fname,sep="\t",header=TRUE)
 }
 suppressWarnings(
-  # Original
-  if(is.na(Zome_data)[1] || !is.double(Zome_data)){
+  
+  if(is.na(Zome_data)[1] == FALSE || !is.double(Zome_data)){
+    print(" Line 88, is it reading the zMat data?")
+    # Original
    # if(is.na(Zome_data)==FALSE){ 
     rnames<-rownames(Zome_data)
     if(length(which(duplicated(rnames)==TRUE))>0){
@@ -109,7 +111,7 @@ if(is.na(wome_fname)==FALSE){
 }
 
 suppressWarnings(
-	if(is.na(Wome_data)==FALSE){    
+	if(is.na(Wome_data)[1]==FALSE){    
     rnames<-rownames(Wome_data)
     if(length(which(duplicated(rnames)==TRUE))>0){
    
@@ -212,12 +214,12 @@ if(is.na(classname)==FALSE && is.na(classlabels)==FALSE){
 
     
     suppressWarnings(
-    if(is.na(Zome_data)==FALSE){
+    if(is.na(Zome_data)[1]==FALSE){
     Zome_data<-Zome_data[,which(classlabels_vec==classname),drop=FALSE]
     })
     
     suppressWarnings(
-    if(is.na(Wome_data)==FALSE){
+    if(is.na(Wome_data)[1]==FALSE){
     Wome_data<-Wome_data[,which(classlabels_vec==classname),drop=FALSE]
     })
 })
@@ -255,7 +257,7 @@ save(g1,file="g1.Rda")
     id_mapping_mat<-g1$id_mapping_mat
     
     suppressWarnings(
-    if(is.na(Zome_data)==FALSE){
+    if(is.na(Zome_data)[1]==FALSE){
 
 suppressWarnings(check_file<-try(load("g2.Rda"),silent=TRUE))
     if(is(check_file,"try-error")){
@@ -294,7 +296,7 @@ suppressWarnings(check_file<-try(load("g2.Rda"),silent=TRUE))
     })
 
 suppressWarnings(
-    if(is.na(Wome_data)==FALSE){
+    if(is.na(Wome_data)[1]==FALSE){
         
         suppressWarnings(
         check_file<-try(load("g4.Rda"),silent=TRUE)
@@ -356,7 +358,7 @@ id_mapping_mat<-rbind(id_mapping_mat,g6$id_mapping_mat)
     }
     suppressWarnings(
 	#4-way 
-    if(is.na(Zome_data)==FALSE && is.na(Wome_data)==FALSE && is.na(Yome_data)==FALSE)
+    if(is.na(Zome_data)[1]==FALSE && is.na(Wome_data)[1]==FALSE && is.na(Yome_data)[1]==FALSE)
     {
         
         if(use.X.reference==TRUE){
@@ -377,7 +379,7 @@ id_mapping_mat<-rbind(id_mapping_mat,g6$id_mapping_mat)
     }else{
     
     #3-way
-    if(is.na(Zome_data)==FALSE && is.na(Yome_data)==FALSE && is.na(Wome_data)==TRUE){
+    if(is.na(Zome_data)[1]==FALSE && is.na(Yome_data)[1]==FALSE && is.na(Wome_data)[1]==TRUE){
         
         if(use.X.reference==TRUE){
             
@@ -398,7 +400,7 @@ id_mapping_mat<-rbind(id_mapping_mat,g6$id_mapping_mat)
     }else{
         
         #2-way
-        if(is.na(Zome_data)==TRUE && is.na(Yome_data)==FALSE && is.na(Wome_data)==TRUE){
+        if(is.na(Zome_data)[1]==TRUE && is.na(Yome_data)[1]==FALSE && is.na(Wome_data)[1]==TRUE){
         df_matrix<-rbind(g1$graphobject)
         
         rownames_vec<-g1$rownames_vec
@@ -920,7 +922,7 @@ if(length(which(rnames%in%clust_id_mapping_mat$Name))>1){
 }
 
 suppressWarnings(
-if(is.na(Zome_data)==FALSE){
+if(is.na(Zome_data)[1]==FALSE){
 rnames<-rownames(Zome_data)
 if(length(which(rnames%in%clust_id_mapping_mat$Name))>1){
     Zome_data<-Zome_data[which(rnames%in%clust_id_mapping_mat$Name),,drop=FALSE]
@@ -940,7 +942,7 @@ if(length(which(rnames%in%clust_id_mapping_mat$Name))>1){
 
 })
 suppressWarnings(
-if(is.na(Wome_data)==FALSE){
+if(is.na(Wome_data)[1]==FALSE){
     rnames<-rownames(Wome_data)
     if(length(which(rnames%in%clust_id_mapping_mat$Name))>1){
         Wome_data<-Wome_data[which(rnames%in%clust_id_mapping_mat$Name),,drop=FALSE]

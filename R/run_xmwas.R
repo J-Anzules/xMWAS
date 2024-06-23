@@ -224,9 +224,6 @@ html.selfcontained = TRUE,globalcomparison=TRUE,plot.pairwise=TRUE,apply.sparse.
       
         
     })
-    print("Script made it to line 228")
-    # print(head(Xome_data, n=1))
-    # xMwas_Xome <<- Xome_data
     
     
     suppressWarnings(
@@ -250,8 +247,8 @@ html.selfcontained = TRUE,globalcomparison=TRUE,plot.pairwise=TRUE,apply.sparse.
         
         
     }
-    # Another problematic area?
-    print("line 254")
+    
+    
     suppressWarnings(
     # Original
     #if(is.na(classlabels)==TRUE){
@@ -325,11 +322,11 @@ html.selfcontained = TRUE,globalcomparison=TRUE,plot.pairwise=TRUE,apply.sparse.
          
         }
     )
-    print("After the problems line 323")
+    
 
 if(globalcomparison==TRUE){
     if(pairedanalysis==TRUE){
-        
+        print("")
         classlabels_temp<-classlabels[,-c(2)] #[,c(class_check)]
         classlabels_temp<-as.data.frame(classlabels_temp)
         
