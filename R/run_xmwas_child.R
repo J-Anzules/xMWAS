@@ -12,7 +12,7 @@ suppressWarnings(dir.create(outloc))
 setwd(outloc)
 
 
-if(is.na(classname)==TRUE){
+if(is.na(classname)[1]==TRUE){
     print(paste("Analyzing all samples",sep=""))
     
     fname_id_mapping<-paste("NodeID_Name_mapping.txt",sep="")
@@ -202,7 +202,7 @@ if(pairedanalysis==TRUE){
 }
 
 suppressWarnings(
-if(is.na(classname)==FALSE && is.na(classlabels)==FALSE){
+if(is.na(classname)[1]==FALSE && is.na(classlabels)[1]==FALSE){
     
     rnames_x<-rownames(Xome_data)
     Xome_data<-Xome_data[,which(classlabels_vec==classname),drop=FALSE]
@@ -469,7 +469,7 @@ id_mapping_mat<-rbind(id_mapping_mat,g6$id_mapping_mat)
         
        if(is(check_file,"try-error")){
            
-           if(is.na(classname)==TRUE){
+           if(is.na(classname)[1]==TRUE){
            
                fname<-paste("Multidata_Network_threshold",corthresh,".png",sep="")
            }else{
@@ -481,7 +481,7 @@ id_mapping_mat<-rbind(id_mapping_mat,g6$id_mapping_mat)
        png(fname,width=8,height=8,res=600,type="cairo",units="in")
        
        
-       if(is.na(classname)==TRUE){
+       if(is.na(classname)[1]==TRUE){
            
            fname<-paste("Multidata_Network_threshold",corthresh,sep="")
        }else{
@@ -562,7 +562,7 @@ id_mapping_mat<-rbind(id_mapping_mat,g6$id_mapping_mat)
                network_stats<-cbind(cc, modularity_measure)
                colnames(network_stats)<-c("Clustering coefficient (graph level)",paste("Modularity measure (based on community membership) using ",modularity_method,sep=""))
                
-               if(is.na(classname)==TRUE){
+               if(is.na(classname)[1]==TRUE){
                mod_measure_fname<-paste("Network_stats.csv",sep="")
                
                fname<-paste("Multidata_Network_threshold",corthresh,"_communities.png",sep="")
@@ -661,7 +661,7 @@ id_mapping_mat<-rbind(id_mapping_mat,g6$id_mapping_mat)
                
                # mtext("(Edges) Red: +ve correlation; Blue: -ve correlation",side=0,line=0,cex=0.8,adj=(-0.2))
                
-               if(is.na(classname)==TRUE){
+               if(is.na(classname)[1]==TRUE){
                mtext("Using all samples",side=3,line=1,cex=0.6,adj=NA)
                }else{
                    
@@ -888,7 +888,7 @@ id_mapping_mat<-rbind(id_mapping_mat,g6$id_mapping_mat)
 #save(list=ls(),file="debug.Rda")
 
 
-if(is.na(classname)==TRUE){
+if(is.na(classname)[1]==TRUE){
     #if(FALSE)
     {
 rnames<-rownames(Xome_data)
